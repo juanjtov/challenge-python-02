@@ -1,13 +1,32 @@
 # Resolve the problem!!
 import string
+import random
 
 SYMBOLS = list('!"#$%&\'()*+,-./:;?@[]^_`{|}~')
+UPPER_CASE = list('ABCDHJKRSTXYZ')
+LOWER_CASE = list('abcdhjkrstxyz')
+NUMBERS = list('1234567890')
 
 
 def generate_password():
+    
     # Start coding here
-
-
+    full_string = SYMBOLS + UPPER_CASE + LOWER_CASE + NUMBERS
+    
+    passwd = ''
+    while validate(passwd) == False: 
+        passwd_gen = []
+        i = random.randint(8,16)
+        while i > 0:
+            rand_char = random.choice(full_string)
+            passwd_gen.append(rand_char) 
+            i-=1
+            
+        passwd = ''.join(passwd_gen)
+            
+    return passwd
+    
+   
 def validate(password):
 
     if len(password) >= 8 and len(password) <= 16:
